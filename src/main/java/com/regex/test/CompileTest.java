@@ -18,6 +18,8 @@ public class CompileTest {
 
     public static final Pattern ENGLISH_WITH_BLANK_REGEXP = Pattern.compile("^[a-zA-Z0-9\\.,_\\-\\(\\)/\\\\&'\"\\s]*$");
 
+    public static final Pattern HTML_REGEXP = Pattern.compile("<(S*?)[^>]*>.*?|<.*? />");
+
     public static void main(String[] args) {
         String username = "asd";
         Matcher usernameMatcher = USERNAME_PATTERN.matcher(username);
@@ -51,5 +53,9 @@ public class CompileTest {
         String englishName = "Hong Kong. 1, 2-3_4(5)sa'6'with\"7\"and/with&more\\end";
         Matcher englishNameMatcher = ENGLISH_WITH_BLANK_REGEXP.matcher(englishName);
         System.out.println(englishName + " ---- " + "english name match : " + englishNameMatcher.matches());
+
+        String html = "<html>";
+        Matcher htmlMatcher = HTML_REGEXP.matcher(html);
+        System.out.println("html match : " + htmlMatcher.matches());
     }
 }
