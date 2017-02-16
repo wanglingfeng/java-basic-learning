@@ -32,6 +32,12 @@ public class ForkJoinSumCalculator extends RecursiveTask<Long> {
         long[] numbers = LongStream.rangeClosed(1, n).toArray();
 
         ForkJoinTask<Long> task = new ForkJoinSumCalculator(numbers);
+
+        // 如果任务被取消或者抛出异常
+        if (task.isCompletedAbnormally()) {
+            System.out.println(task.getException());
+            return 0l;
+        }
         return new ForkJoinPool().invoke(task);
     }
 
