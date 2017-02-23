@@ -5,5 +5,12 @@ package com.threadlocal.study;
  */
 public class ThreadLocalTest {
 
-    public static ThreadLocal<String> threadLocal = new ThreadLocal<>();
+    public static void main(String... args) {
+        MyThreadLocal.create(2);
+
+        int value = MyThreadLocal.instance().getValue();
+        System.out.println(value);
+
+        MyThreadLocal.clear();
+    }
 }
