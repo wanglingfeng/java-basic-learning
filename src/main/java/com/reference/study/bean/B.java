@@ -1,4 +1,4 @@
-package com.reference.study;
+package com.reference.study.bean;
 
 /**
  * Created by lfwang on 2017/2/21.

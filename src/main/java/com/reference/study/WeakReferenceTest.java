@@ -1,5 +1,7 @@
 package com.reference.study;
 
+import com.reference.study.bean.A;
+
 import java.lang.ref.WeakReference;
 
 /**
