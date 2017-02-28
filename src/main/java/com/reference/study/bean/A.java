@@ -6,4 +6,8 @@ package com.reference.study.bean;
 public class A {
 
     public String str = null;
+
+    public void finalize() {
+        System.out.println("Finalizing ... "+ str);
+    }
 }

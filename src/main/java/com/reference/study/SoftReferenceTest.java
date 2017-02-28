@@ -5,8 +5,8 @@ import com.reference.study.bean.A;
 import java.lang.ref.SoftReference;
 
 /**
- * SoftReference：强引用
- * 当强引用某个对象设置为null时，这个对象此时只被强引用依赖，除非JVM即将OutOfMemory，否则不会被GC回收
+ * SoftReference：弱引用
+ * 当弱引用某个对象设置为null时，这个对象此时只被弱引用依赖，除非JVM即将OutOfMemory，否则不会被GC回收
  * 所以这个例子的打印结果会一直持续下去
  *
  * Created by lfwang on 2017/2/21.
@@ -18,7 +18,7 @@ public class SoftReferenceTest {
         a.str = "Hello, reference";
         SoftReference<A> soft = new SoftReference<>(a);
 
-        a = null; // a设置为null后，a只会被强引用依赖，除非JVM即将OutOfMemory，否则不会被GC回收
+        a = null; // a设置为null后，a只会被弱引用依赖，除非JVM即将OutOfMemory，否则不会被GC回收
         int i = 0;
 
         while (null != soft.get()) {
