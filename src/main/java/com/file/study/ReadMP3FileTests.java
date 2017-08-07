@@ -1,8 +1,7 @@
 package com.file.study;
 
-import javazoom.spi.mpeg.sampled.file.MpegAudioFileReader;
-
 import javax.sound.sampled.AudioFileFormat;
+import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
@@ -18,7 +17,7 @@ public class ReadMP3FileTests {
         File file = new File("/Users/lfwang/Music/网易云音乐/1,2,3,4.mp3");
         /*File file = new File("/Users/lfwang/Music/网易云音乐/Fitz & the Tantrums - HandClap.mp3");*/
 
-        AudioFileFormat baseFileFormat = new MpegAudioFileReader().getAudioFileFormat(file);
+        AudioFileFormat baseFileFormat = AudioSystem.getAudioFileFormat(file);
         Map<String,Object> properties = baseFileFormat.properties();
         
         String name = (String) properties.get("title");
