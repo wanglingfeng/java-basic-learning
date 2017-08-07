@@ -1,4 +1,4 @@
-package com.file.study;
+package com.mp3.study;
 
 import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioSystem;
