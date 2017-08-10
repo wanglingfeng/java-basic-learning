@@ -8,10 +8,7 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.TimeZone;
+import java.util.*;
 
 /**
  * Created by lfwang on 2016/8/24.
@@ -44,7 +41,11 @@ public class MainTest {
 
         System.out.println("sadf" + "\n" + "fff");
 
-        Date date = new Date(116, 10, 14, 15, 32, 45);
+        /*Date date = new Date(116, 10, 14, 15, 32, 45);*/
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2016, Calendar.NOVEMBER, 14, 15, 32, 45);
+        Date date = calendar.getTime();
+        
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
         System.out.println(dateFormat.format(date));
