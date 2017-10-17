@@ -11,5 +11,7 @@ public class MathTest {
         int i = 0;
         i = i++; // 因为这里将自增前i的值，重新赋值给了i，所以i任然等于0
         System.out.println(i);
+
+        System.out.println(Integer.toBinaryString(25));
     }
 }

@@ -1,5 +1,7 @@
 package com.reference.study;
 
+import java.util.Arrays;
+
 /**
  * 值引用
  *
@@ -19,7 +21,7 @@ public class ValueReferenceTest {
 
         int[] counts = {1, 2, 3, 4, 5};
         changeArray(counts);
-        System.out.println("counts[0] = " + counts[0]);
+        System.out.println("counts = " + Arrays.toString(counts));
     }
 
     /**
