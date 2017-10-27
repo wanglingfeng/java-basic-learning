@@ -3,7 +3,7 @@ package com.concurrent;
 /**
  * Created by lfwang on 2017/10/27.
  */
-public class ThreeThreadExecuteWithOrder {
+public class ABCRunWithOrder {
     
     public static void main(String... args) throws InterruptedException {
         Thread t1 = new Thread(new T1());
