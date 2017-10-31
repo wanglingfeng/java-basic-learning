@@ -5,8 +5,8 @@ import com.reference.study.bean.A;
 import java.lang.ref.SoftReference;
 
 /**
- * SoftReference：弱引用
- * 当弱引用某个对象设置为null时，这个对象此时只被弱引用依赖，除非JVM即将OutOfMemory，否则不会被GC回收
+ * SoftReference：软引用
+ * 当软引用某个对象设置为null时，这个对象此时只被软引用依赖，除非JVM即将OutOfMemory，否则不会被GC回收
  * 所以这个例子的打印结果会一直持续下去
  *
  * Created by lfwang on 2017/2/21.
