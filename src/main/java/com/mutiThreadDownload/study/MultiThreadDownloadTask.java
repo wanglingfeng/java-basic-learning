@@ -47,7 +47,8 @@ public class MultiThreadDownloadTask {
      */
     public void downloadPart() {
         // 在请求url内获取文件资源的名称；此处没考虑文件名为空的情况，此种情况可能需使用UUID来生成一个唯一数来代表文件名。
-        fileName = filePath.substring(filePath.lastIndexOf('/') + 1, filePath.contains("?") ? filePath.lastIndexOf('?') : filePath.length());
+        fileName = filePath.substring(filePath.lastIndexOf('/') + 1, 
+                filePath.contains("?") ? filePath.lastIndexOf('?') : filePath.length());
         tmpFileName = fileName + "_tmp";
 
         try {
@@ -78,8 +79,8 @@ public class MultiThreadDownloadTask {
 
             if (file.length() == fileLength) {
                 if (tmpFile.exists()) {
-                    System.out.println("delect the temp file!!");
-                    tmpFile.delete();
+                    System.out.println("delete the temp file!!");
+                    tmpFile.deleteOnExit();
                 }
             }
         } catch (IOException | InterruptedException e) {
@@ -201,7 +202,7 @@ public class MultiThreadDownloadTask {
                         // 向服务器请求指定区间段的数据，这是实现断点续传的根本。
                         connection.setRequestProperty("Range", "bytes=" + startPos + "-" + endPos);
 
-                        System.out.println("Thread " + id + " the total size:---- " + (endPos - startPos));
+                        System.out.println("Thread " + id + ": the total size ==> " + (endPos - startPos));
 
                         downloadFile.seek(startPos);
 
@@ -212,7 +213,7 @@ public class MultiThreadDownloadTask {
                             downloadFile.close();
                             latch.countDown(); // 计数器自减
 
-                            System.out.println("the thread ---" + id + " has done!!");
+                            System.out.println("the thread " + id + " has done!!");
                             break;
                         }
 
@@ -237,11 +238,11 @@ public class MultiThreadDownloadTask {
                         connection.disconnect();
                         downloadFile.close();
                         randomAccessFile.close();
+                    } else {
+                        latch.countDown(); // 计数器自减
+                        System.out.println("the thread " + id + " has done!!");
+                        break;
                     }
-                    
-                    latch.countDown(); // 计数器自减
-                    System.out.println("the thread " + id + " has done!!");
-                    break;
                 } catch (IOException e) {
                     e.printStackTrace();
                 } finally {
