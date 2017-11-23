@@ -68,7 +68,10 @@ public class MultiThreadDownloadTask {
                 System.out.println("the file you want to download has exited!!");
                 return;
             } else {
+                // 第一步，分析已下载的临时文件，设置断点，如果是新的下载任务，则建立目标文件
                 setBreakPoint(startPos, endPos, tmpFile);
+
+                //第二步，分多个线程下载文件
                 ExecutorService exec = Executors.newCachedThreadPool();
                 for (int i = 0; i < threadNum; i++) {
                     exec.execute(new DownLoadThread(startPos[i], endPos[i], this, i, latch));
