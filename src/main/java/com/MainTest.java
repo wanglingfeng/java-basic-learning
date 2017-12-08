@@ -52,6 +52,9 @@ public class MainTest {
 
         String dateResult = Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate().format(DateTimeFormatter.ISO_LOCAL_DATE);
         System.out.println(dateResult);
+
+        System.out.print("CPU个数:");
+        System.out.println(Runtime.getRuntime().availableProcessors()); // availableProcessors()获取当前电脑CPU数量
     }
 
     @AllArgsConstructor
