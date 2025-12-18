@@ -3,14 +3,14 @@ package com.deadlock.study;
 /**
  * User: lfwang
  * Date: 15-8-17
- * Time: ÏÂÎç4:59
+ * Time: ä¸‹åˆ4:59
  *
- * Ò»¸ö¼òµ¥µÄËÀËøÀà
- * µ±ÀàµÄ¶ÔÏóflag=1Ê±£¨T1£©£¬ÏÈËø¶¨O1,Ë¯Ãß500ºÁÃë£¬È»ºóËø¶¨O2£»
- * ¶øT1ÔÚË¯ÃßµÄÊ±ºòÁíÒ»¸öflag=0µÄ¶ÔÏó£¨T2£©Ïß³ÌÆô¶¯£¬ÏÈËø¶¨O2,Ë¯Ãß500ºÁÃë£¬µÈ´ýT1ÊÍ·ÅO1£»
- * T1Ë¯Ãß½áÊøºóÐèÒªËø¶¨O2²ÅÄÜ¼ÌÐøÖ´ÐÐ£¬¶ø´ËÊ±O2ÒÑ±»T2Ëø¶¨£»
- * T2Ë¯Ãß½áÊøºóÐèÒªËø¶¨O1²ÅÄÜ¼ÌÐøÖ´ÐÐ£¬¶ø´ËÊ±O1ÒÑ±»T1Ëø¶¨£»
- * T1¡¢T2Ïà»¥µÈ´ý£¬¶¼ÐèÒª¶Ô·½Ëø¶¨µÄ×ÊÔ´²ÅÄÜ¼ÌÐøÖ´ÐÐ£¬´Ó¶øËÀËø¡£
+ * ä¸€ä¸ªç®€å•çš„æ­»é”ç±»
+ * å½“ç±»çš„å¯¹è±¡flag=1æ—¶ï¼ˆT1ï¼‰ï¼Œå…ˆé”å®šO1,ç¡çœ 500æ¯«ç§’ï¼Œç„¶åŽé”å®šO2ï¼›
+ * è€ŒT1åœ¨ç¡çœ çš„æ—¶å€™å¦ä¸€ä¸ªflag=0çš„å¯¹è±¡ï¼ˆT2ï¼‰çº¿ç¨‹å¯åŠ¨ï¼Œå…ˆé”å®šO2,ç¡çœ 500æ¯«ç§’ï¼Œç­‰å¾…T1é‡Šæ”¾O1ï¼›
+ * T1ç¡çœ ç»“æŸåŽéœ€è¦é”å®šO2æ‰èƒ½ç»§ç»­æ‰§è¡Œï¼Œè€Œæ­¤æ—¶O2å·²è¢«T2é”å®šï¼›
+ * T2ç¡çœ ç»“æŸåŽéœ€è¦é”å®šO1æ‰èƒ½ç»§ç»­æ‰§è¡Œï¼Œè€Œæ­¤æ—¶O1å·²è¢«T1é”å®šï¼›
+ * T1ã€T2ç›¸äº’ç­‰å¾…ï¼Œéƒ½éœ€è¦å¯¹æ–¹é”å®šçš„èµ„æºæ‰èƒ½ç»§ç»­æ‰§è¡Œï¼Œä»Žè€Œæ­»é”ã€‚
  */
 public class DeadLock implements Runnable {
 
@@ -34,7 +34,7 @@ public class DeadLock implements Runnable {
                 }
             }
 
-            //ËÀËø½â¾ö·½°¸
+            //æ­»é”è§£å†³æ–¹æ¡ˆ
 //            synchronized (o1) {
 //                synchronized (o2) {
 //                    try {
@@ -61,7 +61,7 @@ public class DeadLock implements Runnable {
                 }
             }
 
-            //ËÀËø½â¾ö·½°¸
+            //æ­»é”è§£å†³æ–¹æ¡ˆ
 //            synchronized (o2) {
 //                synchronized (o1) {
 //                    try {

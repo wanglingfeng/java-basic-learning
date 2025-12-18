@@ -33,7 +33,7 @@ public class DateTimeFormatterTest {
     }
 
     /**
-     * »ñÈ¡µ±Ç°ÖÜµÄµÚÒ»Ìì
+     * èŽ·å–å½“å‰å‘¨çš„ç¬¬ä¸€å¤©
      * @param dateTime
      * @return
      */
@@ -44,14 +44,14 @@ public class DateTimeFormatterTest {
     }
 
     /**
-     * »ñÈ¡µ±Ç°ÖÜµÄ×îºóÒ»Ìì
+     * èŽ·å–å½“å‰å‘¨çš„æœ€åŽä¸€å¤©
      * @param dateTime
      * @return
      */
     public static LocalDateTime lastDayOfWeek(LocalDateTime dateTime) {
 
         return dateTime.with(temporal -> temporal.with(ChronoField.DAY_OF_WEEK,
-                ChronoField.DAY_OF_WEEK.range().getMaximum()))
+                        ChronoField.DAY_OF_WEEK.range().getMaximum()))
                 .withHour((int) ChronoField.HOUR_OF_DAY.range().getMaximum())
                 .withMinute((int) ChronoField.MINUTE_OF_HOUR.range().getMaximum())
                 .withSecond((int) ChronoField.SECOND_OF_MINUTE.range().getMaximum())
