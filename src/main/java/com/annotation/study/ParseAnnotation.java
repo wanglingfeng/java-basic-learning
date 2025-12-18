@@ -1,7 +1,5 @@
 package com.annotation.study;
 
-import org.aspectj.weaver.ast.Test;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;

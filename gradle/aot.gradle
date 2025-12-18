@@ -1,0 +1,28 @@
+compileJava.dependsOn processResources
+compileJava {
+    println "dev aot enabled --->>>>> $archivesBaseName"
+    doLast {
+        println "dev instrumentation --->>> $archivesBaseName"
+        ant.taskdef(name: 'instrumentation', classname: 'co.paralleluniverse.fibers.instrument.InstrumentationTask', classpath: "${configurations.runtime.asPath}")
+        ant.instrumentation(verbose: 'true', check: 'true', debug: 'true') {
+//            fileset(dir: sourceSets.main.output.classesDirs)
+            if (file("../dress-proto/build/classes").exists()) {
+                fileset(dir: '../dress-proto/build/classes')
+            }
+            fileset(dir: 'build/classes')
+        }
+    }
+}
+compileTestJava.dependsOn processTestResources
+compileTestJava {
+    doLast {
+        ant.taskdef(name: 'instrumentation', classname: 'co.paralleluniverse.fibers.instrument.InstrumentationTask', classpath: "build/classes/java/main:build/resources/main:${configurations.runtime.asPath}")
+        ant.instrumentation(verbose: 'true', check: 'true', debug: 'true') {
+//            fileset(dir: sourceSets.test.output.classesDir)
+            if (file("../dress-proto/build/classes").exists()) {
+                fileset(dir: '../dress-proto/build/classes')
+            }
+            fileset(dir: 'build/classes')
+        }
+    }
+}

@@ -1,6 +1,6 @@
 package com.java8.parallel.study;
 
-import org.apache.commons.collections.map.HashedMap;
+import com.google.common.collect.Maps;
 
 import java.util.*;
 import java.util.concurrent.BlockingQueue;
@@ -17,7 +17,7 @@ import java.util.stream.StreamSupport;
 public class StreamForker<T> {
 
     private final Stream<T> stream;
-    private final Map<Object, Function<Stream<T>, ?>> forks = new HashedMap();
+    private final Map<Object, Function<Stream<T>, ?>> forks = Maps.newHashMap();
 
     public StreamForker(Stream<T> stream) {
         this.stream = stream;

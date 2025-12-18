@@ -1,0 +1,40 @@
+compileJava.dependsOn processResources
+compileJava {
+    println "release aot enabled --->>>>> scan the project [ $archivesBaseName ]"
+    doFirst {
+        ant.taskdef(name: 'scanSuspendables', classname: 'co.paralleluniverse.fibers.instrument.SuspendablesScanner', classpath: "${configurations.runtime.asPath}")
+        ant.scanSuspendables(
+                auto: true,
+                suspendablesFile: "${sourceSets.main.output.resourcesDir}/META-INF/suspendables",
+                supersFile: "${sourceSets.main.output.resourcesDir}/META-INF/suspendable-supers") {
+//            fileset(dir: sourceSets.main.output.classesDirs)
+            if (file("../dress-proto/build/classes").exists()) {
+                fileset(dir: '../dress-proto/build/classes')
+            }
+            fileset(dir: 'build/classes')
+        }
+    }
+    doLast {
+        ant.taskdef(name: 'instrumentation', classname: 'co.paralleluniverse.fibers.instrument.InstrumentationTask', classpath: "${configurations.runtime.asPath}")
+        ant.instrumentation(verbose: 'true', check: 'true', debug: 'true') {
+//            fileset(dir: sourceSets.main.output.classesDirs)
+            if (file("../dress-proto/build/classes").exists()) {
+                fileset(dir: '../dress-proto/build/classes')
+            }
+            fileset(dir: 'build/classes')
+        }
+    }
+}
+compileTestJava.dependsOn processTestResources
+compileTestJava {
+    doLast {
+        ant.taskdef(name: 'instrumentation', classname: 'co.paralleluniverse.fibers.instrument.InstrumentationTask', classpath: "build/classes/java/main:build/resources/main:${configurations.runtime.asPath}")
+        ant.instrumentation(verbose: 'true', check: 'true', debug: 'true') {
+//            fileset(dir: sourceSets.test.output.classesDir)
+            if (file("../dress-proto/build/classes").exists()) {
+                fileset(dir: '../dress-proto/build/classes')
+            }
+            fileset(dir: 'build/classes')
+        }
+    }
+}
